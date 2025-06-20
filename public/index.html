@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antenna EM-Field Visualizer</title>
+<link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+    </head>
+    <body>
+    <header>
+        <h1>📡 Antenna EM-Field Visualizer</h1>
+        <button id="themeToggle" title="Toggle Dark/Light Mode">☀️</button>
+    </header>
+
+    <main>
+        <aside id="controls">
+            <form id="controlForm">
+                <div class="control-group">
+                    <label for="antennaType">Antenna Type</label>
+                    <select id="antennaType" name="antennaType">
+                        <option value="Dipole">Half-Wave Dipole</option>
+                        <option value="Monopole">Monopole (Ground)</option>
+                        <option value="Yagi">3-Element Yagi-Uda</option>
+                        <option value="Dish">Parabolic Dish</option>
+                        <option value="Patch">Rectangular Patch</option>
+                    </select>
+                </div>
+
+                <fieldset id="commonParams">
+                    <legend>Common Parameters</legend>
+                    <div class="control-group">
+                        <label for="frequency">Frequency (MHz)</label>
+                        <input type="number" id="frequency" name="frequency" value="300" min="1" max="10000" step="1">
+                    </div>
+                    <div class="control-group">
+                        <label for="power">Power (W)</label>
+                        <input type="number" id="power" name="power" value="1" min="0.1" max="1000" step="0.1">
+                    </div>
+                </fieldset>
+
+                <fieldset id="specificParams">
+                    <legend>Specific Parameters</legend>
+                    <!-- Dynamically populated by JS -->
+                </fieldset>
+
+                <fieldset id="viewParams">
+                    <legend>View Options</legend>
+                    <div class="control-group">
+                        <label for="viewMode">Render As</label>
+                        <select id="viewMode" name="viewMode">
+                            <option value="surface" selected>Surface Mesh</option>
+                            <option value="points">Point Cloud</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="resolution">Resolution (Degrees)</label>
+                        <input type="range" id="resolution" name="resolution" value="4" min="2" max="10" step="1">
+                            <span id="resolutionValue">4°</span>
+                    </div>
+                </fieldset>
+
+                <div class="button-group">
+                    <button type="button" id="resetBtn">Reset View</button>
+                    <button type="button" id="exportBtn">Export PNG</button>
+                </div>
+            </form>
+        </aside>
+
+        <div id="scene-container">
+            <canvas id="emScene"></canvas>
+            <div id="loader"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 · Built with Pure JS & Three.js</p>
+    </footer>
+
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+            "three/controls/OrbitControls": "https://unpkg.com/three@0.165.0/examples/jsm/controls/OrbitControls.js"
+        }
+    }
+    </script>
+    <script type="module" src="js/main.js"></script>
+    </body>
+</html>

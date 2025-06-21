@@ -217,13 +217,14 @@ button:hover,
         width: 100%;
         height: auto;
         max-height: 0;
-        overflow: hidden;
+        overflow-y: hidden;
         border-right: none;
         border-top: 1px solid var(--c-border);
         transition: max-height 0.3s ease;
     }
     #controls.open {
-        max-height: 20rem;
+        max-height: 80vh;
+        overflow-y: auto;
     }
     #controlForm {
         display: grid;

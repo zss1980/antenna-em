@@ -62,6 +62,13 @@ class App {
             document.getElementById('themeToggle').textContent = isLight ? '🌙' : '☀️';
             this.sceneManager.updateTheme(isLight);
         });
+
+        const menuBtn = document.getElementById('menuToggle');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                document.getElementById('controls').classList.toggle('open');
+            });
+        }
     }
 
     onControlsChanged() {
